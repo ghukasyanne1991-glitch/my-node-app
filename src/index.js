@@ -8,11 +8,13 @@ app.use(express.json());
 app.get("/health", async (req, res) => {
     try{
         //console.log("Trying DB connection...");
-        const [rows] = await db.query ('SELECT 1');
+        const result = await db.query ('SELECT 1');
+        const rows = result[0];
         //console.log("DB query successful:", rows);
        res.status(200).json({
            status: 'ok',
-           db: 'connected'
+           db: 'connected',
+           rows: rows,
        });
     } catch (err) {
         //console.error("DB connection error:", err);
