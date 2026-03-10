@@ -1,14 +1,13 @@
-# render.yaml
 services:
-  -type: web
-  name: my-node-app
-  env: node
-  region: oregon
-  buildCommand: npm install
+  - type: web
+    name: my-node-app
+    env: node
+    region: oregon
+    buildCommand: npm install
     startCommand: npm start
     healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production
       - key: DATABASE_URL
-        sync: false  # Must be set manually in Render dashboard
+        sync: false
